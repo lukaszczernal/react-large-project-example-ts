@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Theme from 'assets/theme';
 
 import {
   AppBar,
@@ -10,39 +9,38 @@ import {
   Button
 } from 'material-ui';
 
-const styles = {
+interface OwnProps {}
+
+type ClassNames = 'root' | 'flex' | 'appBar';
+
+const decorate = withStyles(({palette}) => ({
   root: {
     width: '100%'
   },
   flex: {
     flex: 1
-  },
-  appBar: {
-    'background-color': Theme.palette.primary['600'] // To match X-Act design
   }
-};
+}));
 
-interface OwnProps {}
-
-type ClassNames = keyof typeof styles;
-
-class NavigationBar extends React.Component<OwnProps & WithStyles<ClassNames>> {
-  render() {
-    return (
-      <AppBar position="static" className={this.props.classes.appBar}>
-        <Toolbar>
-          <Typography
-            type="title"
-            color="inherit"
-            className={this.props.classes.flex}
-          >
-            Administration
-          </Typography>
-          <Button raised={true} color="primary">Log af</Button>
-        </Toolbar>
-      </AppBar>
-    );
+const NavigationBar = decorate<OwnProps>(
+  class extends React.Component<WithStyles<ClassNames>> {
+    render() {
+      return (
+        <AppBar position="static" color="accent">
+          <Toolbar>
+            <Typography
+              type="title"
+              color="inherit"
+              className={this.props.classes.flex}
+            >
+              Administration
+            </Typography>
+            <Button raised={true} color="primary">Login</Button>
+          </Toolbar>
+        </AppBar>
+      );
+    }
   }
-}
+);
 
-export default withStyles(styles)(NavigationBar);
+export default NavigationBar;
