@@ -39,15 +39,15 @@ const NavigationBar = decorate<OwnProps>(
             >
               Administration
             </Typography>
-            <Button>
+            <Button color="inherit">
               <Icon>work</Icon>
               Administration
             </Button>
-            <Button>
+            <Button color="inherit">
               <Icon>group</Icon>
               Support
             </Button>
-            <Button>
+            <Button color="inherit">
               <Icon>settings</Icon>
               API GUI
             </Button>
