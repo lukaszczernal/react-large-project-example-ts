@@ -1,38 +1,51 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Doughnut } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
+
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import Avatar from 'material-ui/Avatar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 
 class ChartBox extends React.Component {
+    title = 'title of chart';
     data = {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
         datasets: [{
-            data: [ 10, 30, 20, 40, 20, 100 ],
-            backgroundColor: [
-                'rgb(54,  162, 235)',
-                'rgb(75,  192, 192)',
-                'rgb(201, 203, 207)',
-                'rgb(255, 159, 64)',
-                'rgb(153, 102, 255)',
-                'rgb(255, 99,  132)',
-                'rgb(255, 205, 86)'
-            ],
-            label: 'Dataset 1'
-        }],
-        labels: [
-            'mocked',
-            'data',
-            'you',
-            'shouldn`t',
-            'care',
-            'about'
-        ]
+            label: 'last 6 days',
+            data: [1, 3, 20, 10, 12, 10],
+            borderColor: '#acc236',
+            fill: true,
+        }]
     };
 
     render() {
-        return (
-            <div>
-                <Doughnut data={this.data} />
-            </div>
-        );
+        return <Card>
+            <CardHeader
+                avatar={
+                    <Avatar aria-label="Recipe">R</Avatar>
+                }
+                title="Example of Chart"
+                subheader="Superawesome chart"
+            />
+            <CardMedia title="graph">
+                <Line data={ this.data }/>
+            </CardMedia>
+            <CardContent>
+                <Typography component="p">
+                    This impressive paella is a perfect party dish and a fun meal to cook together with
+                    your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button color="primary">
+                    Start one thing
+                </Button>
+                <Button color="primary">
+                    Start
+                </Button>
+            </CardActions>
+        </Card>;
     }
 
 }
