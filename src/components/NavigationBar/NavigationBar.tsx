@@ -12,9 +12,9 @@ import {
 
 interface OwnProps {}
 
-type ClassNames = 'root' | 'flex' | 'appBar';
+type ClassNames = 'root' | 'flex' | 'appBar' | 'button' | 'leftIcon';
 
-const decorate = withStyles(({palette}) => ({
+const decorate = withStyles((theme) => ({
   root: {
     width: '100%'
   },
@@ -23,6 +23,13 @@ const decorate = withStyles(({palette}) => ({
   },
   appBar: {
     boxShadow: 'none'
+  },
+  button: {
+    margin: theme.spacing.unit,
+    textTransform: 'none'
+  },
+  leftIcon: {
+    marginRight: theme.spacing.unit,
   }
 }));
 
@@ -30,7 +37,7 @@ const NavigationBar = decorate<OwnProps>(
   class extends React.Component<WithStyles<ClassNames>> {
     render() {
       return (
-        <AppBar position="static" color="accent" className={this.props.classes.appBar}>
+        <AppBar position="static" className={this.props.classes.appBar}>
           <Toolbar>
             <Typography
               type="title"
@@ -39,19 +46,19 @@ const NavigationBar = decorate<OwnProps>(
             >
               Administration
             </Typography>
-            <Button color="inherit">
-              <Icon>work</Icon>
+            <Button className={this.props.classes.button} color="contrast">
+              <Icon className={this.props.classes.leftIcon}>work</Icon>
               Administration
             </Button>
-            <Button color="inherit">
-              <Icon>group</Icon>
+            <Button className={this.props.classes.button} color="contrast">
+              <Icon className={this.props.classes.leftIcon}>group</Icon>
               Support
             </Button>
-            <Button color="inherit">
-              <Icon>settings</Icon>
+            <Button className={this.props.classes.button} color="contrast">
+              <Icon className={this.props.classes.leftIcon}>settings</Icon>
               API GUI
             </Button>
-            <Button raised={true} color="primary">Login</Button>
+            <Button raised={true} color="accent">Login</Button>
           </Toolbar>
         </AppBar>
       );
