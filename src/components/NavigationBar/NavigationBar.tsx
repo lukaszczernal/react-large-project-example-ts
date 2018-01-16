@@ -6,7 +6,8 @@ import {
   Typography,
   withStyles,
   WithStyles,
-  Button
+  Button,
+  Icon
 } from 'material-ui';
 
 interface OwnProps {}
@@ -19,6 +20,9 @@ const decorate = withStyles(({palette}) => ({
   },
   flex: {
     flex: 1
+  },
+  appBar: {
+    boxShadow: 'none'
   }
 }));
 
@@ -26,7 +30,7 @@ const NavigationBar = decorate<OwnProps>(
   class extends React.Component<WithStyles<ClassNames>> {
     render() {
       return (
-        <AppBar position="static" color="accent">
+        <AppBar position="static" color="accent" className={this.props.classes.appBar}>
           <Toolbar>
             <Typography
               type="title"
@@ -35,6 +39,18 @@ const NavigationBar = decorate<OwnProps>(
             >
               Administration
             </Typography>
+            <Button>
+              <Icon>work</Icon>
+              Administration
+            </Button>
+            <Button>
+              <Icon>group</Icon>
+              Support
+            </Button>
+            <Button>
+              <Icon>settings</Icon>
+              API GUI
+            </Button>
             <Button raised={true} color="primary">Login</Button>
           </Toolbar>
         </AppBar>
