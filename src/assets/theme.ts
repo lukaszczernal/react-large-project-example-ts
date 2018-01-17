@@ -3,6 +3,7 @@ import createPalette from 'material-ui/styles/createPalette';
 
 let Theme = createMuiTheme({
     palette: createPalette({
+        // contrastThreshold: 1.5, // TODO we will be able to use this feature after TS typings are fixed
         secondary: {
             light: '#ffc359',
             main: '#ffbe45',
